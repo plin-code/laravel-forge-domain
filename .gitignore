@@ -1,0 +1,14 @@
+/vendor
+/build
+/node_modules
+composer.lock
+.phpunit.result.cache
+.phpunit.cache
+.DS_Store
+
+# Local working artifacts: never commit (superpowers / claude / SDD ledger)
+/docs/superpowers/
+/.claude/
+/.superpowers/
+/CLAUDE.md
+/AGENTS.md
