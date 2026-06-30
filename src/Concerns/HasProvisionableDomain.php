@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Concerns;
+namespace PlinCode\LaravelForgeDomain\Concerns;
 
 use DateTimeInterface;
-use PlinCode\ForgeDomain\Support\DomainKind;
-use PlinCode\ForgeDomain\Support\DomainStatus;
-use PlinCode\ForgeDomain\Support\VerificationMethod;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Support\DomainStatus;
+use PlinCode\LaravelForgeDomain\Support\VerificationMethod;
 
 trait HasProvisionableDomain
 {

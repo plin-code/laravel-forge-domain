@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Drivers;
+namespace PlinCode\LaravelForgeDomain\Drivers;
 
 use Carbon\CarbonImmutable;
-use PlinCode\ForgeDomain\Contracts\DomainProvisioner;
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
-use PlinCode\ForgeDomain\Support\ReconcileReport;
+use PlinCode\LaravelForgeDomain\Contracts\DomainProvisioner;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Support\ReconcileReport;
 use Psr\Log\LoggerInterface;
 
 final class ForgeProvisioner implements DomainProvisioner

@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Jobs;
+namespace PlinCode\LaravelForgeDomain\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
-use PlinCode\ForgeDomain\DnsVerifierManager;
-use PlinCode\ForgeDomain\Events\DomainFailed;
-use PlinCode\ForgeDomain\Events\DomainVerified;
-use PlinCode\ForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\DnsVerifierManager;
+use PlinCode\LaravelForgeDomain\Events\DomainFailed;
+use PlinCode\LaravelForgeDomain\Events\DomainVerified;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
 
 final class VerifyDomainJob implements ShouldQueue
 {

@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Database\Factories;
+namespace PlinCode\LaravelForgeDomain\Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
-use PlinCode\ForgeDomain\Models\ManagedDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
-use PlinCode\ForgeDomain\Support\DomainStatus;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Support\DomainStatus;
 
 class ManagedDomainFactory extends Factory
 {

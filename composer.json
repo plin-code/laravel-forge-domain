@@ -1,5 +1,5 @@
 {
-    "name": "plin-code/forge-domain",
+    "name": "plin-code/laravel-forge-domain",
     "description": "Onboard tenant and customer hostnames with DNS verification and a Laravel Forge SSL flow.",
     "keywords": ["laravel", "forge", "domains", "ssl", "multi-tenant", "provisioning"],
     "license": "MIT",
@@ -31,12 +31,12 @@
     },
     "autoload": {
         "psr-4": {
-            "PlinCode\\ForgeDomain\\": "src/",
-            "PlinCode\\ForgeDomain\\Database\\Factories\\": "database/factories/"
+            "PlinCode\\LaravelForgeDomain\\": "src/",
+            "PlinCode\\LaravelForgeDomain\\Database\\Factories\\": "database/factories/"
         }
     },
     "autoload-dev": {
-        "psr-4": { "PlinCode\\ForgeDomain\\Tests\\": "tests/" }
+        "psr-4": { "PlinCode\\LaravelForgeDomain\\Tests\\": "tests/" }
     },
     "scripts": {
         "analyse": "vendor/bin/phpstan analyse",
@@ -51,8 +51,8 @@
     },
     "extra": {
         "laravel": {
-            "providers": ["PlinCode\\ForgeDomain\\ForgeDomainServiceProvider"],
-            "aliases": { "ForgeDomain": "PlinCode\\ForgeDomain\\Facades\\ForgeDomain" }
+            "providers": ["PlinCode\\LaravelForgeDomain\\ForgeDomainServiceProvider"],
+            "aliases": { "ForgeDomain": "PlinCode\\LaravelForgeDomain\\Facades\\ForgeDomain" }
         }
     },
     "minimum-stability": "dev",

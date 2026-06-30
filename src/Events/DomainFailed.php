@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Events;
+namespace PlinCode\LaravelForgeDomain\Events;
 
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
 
 final class DomainFailed
 {

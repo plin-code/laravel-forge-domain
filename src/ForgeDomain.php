@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain;
+namespace PlinCode\LaravelForgeDomain;
 
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
-use PlinCode\ForgeDomain\Jobs\RemoveDomainJob;
-use PlinCode\ForgeDomain\Jobs\VerifyDomainJob;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Jobs\RemoveDomainJob;
+use PlinCode\LaravelForgeDomain\Jobs\VerifyDomainJob;
 
 final class ForgeDomain
 {

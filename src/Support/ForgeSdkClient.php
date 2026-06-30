@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Support;
+namespace PlinCode\LaravelForgeDomain\Support;
 
 use Laravel\Forge\Forge;
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
 use Throwable;
 
 final class ForgeSdkClient implements ForgeClient

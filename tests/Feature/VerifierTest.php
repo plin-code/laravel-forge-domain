@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use PlinCode\ForgeDomain\Contracts\DnsResolver;
-use PlinCode\ForgeDomain\DnsVerifierManager;
-use PlinCode\ForgeDomain\Models\ManagedDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
-use PlinCode\ForgeDomain\Support\FakeDnsResolver;
-use PlinCode\ForgeDomain\Support\VerificationMethod;
-use PlinCode\ForgeDomain\Verifiers\CnameVerifier;
-use PlinCode\ForgeDomain\Verifiers\TxtVerifier;
+use PlinCode\LaravelForgeDomain\Contracts\DnsResolver;
+use PlinCode\LaravelForgeDomain\DnsVerifierManager;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Support\FakeDnsResolver;
+use PlinCode\LaravelForgeDomain\Support\VerificationMethod;
+use PlinCode\LaravelForgeDomain\Verifiers\CnameVerifier;
+use PlinCode\LaravelForgeDomain\Verifiers\TxtVerifier;
 
 it('verifies a cname pointing at the target', function (): void {
     $dns = new FakeDnsResolver;

@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Jobs;
+namespace PlinCode\LaravelForgeDomain\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
@@ -10,10 +10,10 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
-use PlinCode\ForgeDomain\DomainProvisioningManager;
-use PlinCode\ForgeDomain\Models\ManagedDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\DomainProvisioningManager;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
 
 final class ReconcileDomainsJob implements ShouldQueue
 {

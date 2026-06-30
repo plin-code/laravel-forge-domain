@@ -7,7 +7,7 @@ Contributions are welcome. Please follow the steps below to get started.
 Clone the repository and install dependencies:
 
 ```bash
-git clone https://github.com/plin-code/forge-domain.git
+git clone https://github.com/plin-code/laravel-forge-domain.git
 cd forge-domain
 composer install
 ```

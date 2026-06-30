@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use PlinCode\ForgeDomain\Support\ReconcileReport;
+use PlinCode\LaravelForgeDomain\Support\ReconcileReport;
 
 it('holds orphaned and missing forge ids', function (): void {
     $report = new ReconcileReport(orphanedInForge: [10, 11], missingInForge: [20]);

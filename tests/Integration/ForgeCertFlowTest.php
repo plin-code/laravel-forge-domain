@@ -3,7 +3,7 @@
 declare(strict_types=1);
 
 use Laravel\Forge\Forge;
-use PlinCode\ForgeDomain\Support\ForgeSdkClient;
+use PlinCode\LaravelForgeDomain\Support\ForgeSdkClient;
 
 beforeEach(function (): void {
     if (getenv('FORGE_DOMAIN_INTEGRATION') !== '1') {

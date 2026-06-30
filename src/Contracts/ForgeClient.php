@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Contracts;
+namespace PlinCode\LaravelForgeDomain\Contracts;
 
 interface ForgeClient
 {

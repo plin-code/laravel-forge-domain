@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain;
+namespace PlinCode\LaravelForgeDomain;
 
 use Illuminate\Contracts\Container\Container;
 use Laravel\Forge\Forge;
-use PlinCode\ForgeDomain\Commands\ReconcileDomainsCommand;
-use PlinCode\ForgeDomain\Commands\RenewSslCommand;
-use PlinCode\ForgeDomain\Contracts\DnsResolver;
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
-use PlinCode\ForgeDomain\Support\ForgeSdkClient;
-use PlinCode\ForgeDomain\Support\PhpDnsResolver;
+use PlinCode\LaravelForgeDomain\Commands\ReconcileDomainsCommand;
+use PlinCode\LaravelForgeDomain\Commands\RenewSslCommand;
+use PlinCode\LaravelForgeDomain\Contracts\DnsResolver;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\Support\ForgeSdkClient;
+use PlinCode\LaravelForgeDomain\Support\PhpDnsResolver;
 use Spatie\LaravelPackageTools\Package;
 use Spatie\LaravelPackageTools\PackageServiceProvider;
 

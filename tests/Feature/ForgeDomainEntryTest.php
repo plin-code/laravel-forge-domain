@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Bus;
-use PlinCode\ForgeDomain\Facades\ForgeDomain;
-use PlinCode\ForgeDomain\Jobs\ReconcileDomainsJob;
-use PlinCode\ForgeDomain\Jobs\RenewSslJob;
-use PlinCode\ForgeDomain\Jobs\VerifyDomainJob;
-use PlinCode\ForgeDomain\Models\ManagedDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Facades\ForgeDomain;
+use PlinCode\LaravelForgeDomain\Jobs\ReconcileDomainsJob;
+use PlinCode\LaravelForgeDomain\Jobs\RenewSslJob;
+use PlinCode\LaravelForgeDomain\Jobs\VerifyDomainJob;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
 
 it('onboard dispatches verification', function (): void {
     Bus::fake([VerifyDomainJob::class]);

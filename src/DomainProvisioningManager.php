@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain;
+namespace PlinCode\LaravelForgeDomain;
 
 use Illuminate\Contracts\Container\Container;
 use InvalidArgumentException;
-use PlinCode\ForgeDomain\Contracts\DomainProvisioner;
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
-use PlinCode\ForgeDomain\Drivers\ForgeProvisioner;
-use PlinCode\ForgeDomain\Drivers\WildcardProvisioner;
+use PlinCode\LaravelForgeDomain\Contracts\DomainProvisioner;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Drivers\ForgeProvisioner;
+use PlinCode\LaravelForgeDomain\Drivers\WildcardProvisioner;
 use Psr\Log\LoggerInterface;
 
 final class DomainProvisioningManager

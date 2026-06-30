@@ -2,16 +2,16 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Facades;
+namespace PlinCode\LaravelForgeDomain\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
 /**
- * @method static void onboard(\PlinCode\ForgeDomain\Contracts\ProvisionableDomain $domain)
- * @method static void provision(\PlinCode\ForgeDomain\Contracts\ProvisionableDomain $domain)
- * @method static void remove(\PlinCode\ForgeDomain\Contracts\ProvisionableDomain $domain)
+ * @method static void onboard(\PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain $domain)
+ * @method static void provision(\PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain $domain)
+ * @method static void remove(\PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain $domain)
  *
- * @see \PlinCode\ForgeDomain\ForgeDomain
+ * @see \PlinCode\LaravelForgeDomain\ForgeDomain
  */
 final class ForgeDomain extends Facade
 {

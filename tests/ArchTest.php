@@ -7,13 +7,13 @@ arch('no debug helpers')
     ->not->toBeUsed();
 
 arch('strict types everywhere')
-    ->expect('PlinCode\ForgeDomain')
+    ->expect('PlinCode\LaravelForgeDomain')
     ->toUseStrictTypes();
 
 arch('drivers implement the provisioner contract')
-    ->expect('PlinCode\ForgeDomain\Drivers')
-    ->toImplement('PlinCode\ForgeDomain\Contracts\DomainProvisioner');
+    ->expect('PlinCode\LaravelForgeDomain\Drivers')
+    ->toImplement('PlinCode\LaravelForgeDomain\Contracts\DomainProvisioner');
 
 arch('verifiers implement the verifier contract')
-    ->expect('PlinCode\ForgeDomain\Verifiers')
-    ->toImplement('PlinCode\ForgeDomain\Contracts\DnsVerifier');
+    ->expect('PlinCode\LaravelForgeDomain\Verifiers')
+    ->toImplement('PlinCode\LaravelForgeDomain\Contracts\DnsVerifier');

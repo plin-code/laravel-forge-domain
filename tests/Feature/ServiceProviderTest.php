@@ -2,13 +2,13 @@
 
 declare(strict_types=1);
 
-use PlinCode\ForgeDomain\Contracts\DnsResolver;
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
-use PlinCode\ForgeDomain\DnsVerifierManager;
-use PlinCode\ForgeDomain\DomainProvisioningManager;
-use PlinCode\ForgeDomain\ForgeDomain;
-use PlinCode\ForgeDomain\Support\ForgeSdkClient;
-use PlinCode\ForgeDomain\Support\PhpDnsResolver;
+use PlinCode\LaravelForgeDomain\Contracts\DnsResolver;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\DnsVerifierManager;
+use PlinCode\LaravelForgeDomain\DomainProvisioningManager;
+use PlinCode\LaravelForgeDomain\ForgeDomain;
+use PlinCode\LaravelForgeDomain\Support\ForgeSdkClient;
+use PlinCode\LaravelForgeDomain\Support\PhpDnsResolver;
 
 it('binds the package services', function (): void {
     config()->set('forge-domain.forge.organization', 'acme');

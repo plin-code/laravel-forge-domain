@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Contracts;
+namespace PlinCode\LaravelForgeDomain\Contracts;
 
-use PlinCode\ForgeDomain\Support\ReconcileReport;
+use PlinCode\LaravelForgeDomain\Support\ReconcileReport;
 
 interface DomainProvisioner
 {

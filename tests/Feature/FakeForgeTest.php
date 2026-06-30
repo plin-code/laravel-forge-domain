@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-use PlinCode\ForgeDomain\Support\FakeForge;
+use PlinCode\LaravelForgeDomain\Support\FakeForge;
 
 it('records domain and certificate lifecycle', function (): void {
     $forge = new FakeForge;

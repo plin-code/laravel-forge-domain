@@ -2,15 +2,15 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain;
+namespace PlinCode\LaravelForgeDomain;
 
 use Illuminate\Contracts\Container\Container;
-use PlinCode\ForgeDomain\Contracts\DnsResolver;
-use PlinCode\ForgeDomain\Contracts\DnsVerifier;
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
-use PlinCode\ForgeDomain\Support\VerificationMethod;
-use PlinCode\ForgeDomain\Verifiers\CnameVerifier;
-use PlinCode\ForgeDomain\Verifiers\TxtVerifier;
+use PlinCode\LaravelForgeDomain\Contracts\DnsResolver;
+use PlinCode\LaravelForgeDomain\Contracts\DnsVerifier;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Support\VerificationMethod;
+use PlinCode\LaravelForgeDomain\Verifiers\CnameVerifier;
+use PlinCode\LaravelForgeDomain\Verifiers\TxtVerifier;
 
 final class DnsVerifierManager
 {

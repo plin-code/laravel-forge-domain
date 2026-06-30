@@ -2,7 +2,7 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Support;
+namespace PlinCode\LaravelForgeDomain\Support;
 
 enum DomainStatus: string
 {

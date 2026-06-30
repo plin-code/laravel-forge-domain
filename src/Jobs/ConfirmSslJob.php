@@ -2,17 +2,17 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Jobs;
+namespace PlinCode\LaravelForgeDomain\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
-use PlinCode\ForgeDomain\DomainProvisioningManager;
-use PlinCode\ForgeDomain\Events\DomainActivated;
-use PlinCode\ForgeDomain\Events\DomainFailed;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\DomainProvisioningManager;
+use PlinCode\LaravelForgeDomain\Events\DomainActivated;
+use PlinCode\LaravelForgeDomain\Events\DomainFailed;
 
 final class ConfirmSslJob implements ShouldQueue
 {

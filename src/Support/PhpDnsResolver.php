@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Support;
+namespace PlinCode\LaravelForgeDomain\Support;
 
-use PlinCode\ForgeDomain\Contracts\DnsResolver;
+use PlinCode\LaravelForgeDomain\Contracts\DnsResolver;
 
 final class PhpDnsResolver implements DnsResolver
 {

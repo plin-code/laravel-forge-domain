@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Commands;
+namespace PlinCode\LaravelForgeDomain\Commands;
 
 use Illuminate\Console\Command;
-use PlinCode\ForgeDomain\Jobs\RenewSslJob;
-use PlinCode\ForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Jobs\RenewSslJob;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
 
 final class RenewSslCommand extends Command
 {

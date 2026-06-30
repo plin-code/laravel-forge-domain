@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Commands;
+namespace PlinCode\LaravelForgeDomain\Commands;
 
 use Illuminate\Console\Command;
-use PlinCode\ForgeDomain\Jobs\ReconcileDomainsJob;
+use PlinCode\LaravelForgeDomain\Jobs\ReconcileDomainsJob;
 
 final class ReconcileDomainsCommand extends Command
 {

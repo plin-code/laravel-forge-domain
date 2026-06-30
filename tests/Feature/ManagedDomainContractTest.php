@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-use PlinCode\ForgeDomain\Models\ManagedDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
-use PlinCode\ForgeDomain\Support\DomainStatus;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Support\DomainStatus;
 
 it('mutates and persists status through the contract', function (): void {
     $domain = ManagedDomain::create([

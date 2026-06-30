@@ -1,9 +1,9 @@
 # forge-domain
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/plin-code/forge-domain.svg?style=flat-square)](https://packagist.org/packages/plin-code/forge-domain)
-[![Tests](https://img.shields.io/github/actions/workflow/status/plin-code/forge-domain/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/plin-code/forge-domain/actions/workflows/run-tests.yml)
-[![Code Style](https://img.shields.io/github/actions/workflow/status/plin-code/forge-domain/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/plin-code/forge-domain/actions/workflows/fix-php-code-style-issues.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/plin-code/forge-domain.svg?style=flat-square)](https://packagist.org/packages/plin-code/forge-domain)
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/plin-code/laravel-forge-domain.svg?style=flat-square)](https://packagist.org/packages/plin-code/laravel-forge-domain)
+[![Tests](https://img.shields.io/github/actions/workflow/status/plin-code/laravel-forge-domain/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/plin-code/laravel-forge-domain/actions/workflows/run-tests.yml)
+[![Code Style](https://img.shields.io/github/actions/workflow/status/plin-code/laravel-forge-domain/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/plin-code/laravel-forge-domain/actions/workflows/fix-php-code-style-issues.yml)
+[![Total Downloads](https://img.shields.io/packagist/dt/plin-code/laravel-forge-domain.svg?style=flat-square)](https://packagist.org/packages/plin-code/laravel-forge-domain)
 
 A Laravel package for onboarding tenant and customer hostnames with DNS verification and a Laravel Forge SSL provisioning flow.
 
@@ -32,7 +32,7 @@ Multi-tenant SaaS applications often allow customers to bring their own domains.
 Install via Composer:
 
 ```bash
-composer require plin-code/forge-domain
+composer require plin-code/laravel-forge-domain
 ```
 
 Publish the configuration file:
@@ -53,9 +53,9 @@ php artisan migrate
 Call `ForgeDomain::onboard()` after persisting the domain record. The facade dispatches a `VerifyDomainJob` that checks DNS, then hands off to the provisioning driver.
 
 ```php
-use PlinCode\ForgeDomain\Facades\ForgeDomain;
-use PlinCode\ForgeDomain\Models\ManagedDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Facades\ForgeDomain;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
 
 $domain = ManagedDomain::create([
     'hostname' => 'app.customer.com',
@@ -176,7 +176,7 @@ The domain model stores which method was requested in its `verification_method` 
 
 ### Using the shipped `ManagedDomain`
 
-The package ships `PlinCode\ForgeDomain\Models\ManagedDomain`, which uses UUID primary keys and the `forge_domains` table. It implements `ProvisionableDomain` via the `HasProvisionableDomain` trait and is ready to use out of the box.
+The package ships `PlinCode\LaravelForgeDomain\Models\ManagedDomain`, which uses UUID primary keys and the `forge_domains` table. It implements `ProvisionableDomain` via the `HasProvisionableDomain` trait and is ready to use out of the box.
 
 ### Bringing your own model
 
@@ -184,11 +184,11 @@ Implement `ProvisionableDomain` on any Eloquent model and add the `HasProvisiona
 
 ```php
 use Illuminate\Database\Eloquent\Model;
-use PlinCode\ForgeDomain\Concerns\HasProvisionableDomain;
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
-use PlinCode\ForgeDomain\Support\DomainStatus;
-use PlinCode\ForgeDomain\Support\VerificationMethod;
+use PlinCode\LaravelForgeDomain\Concerns\HasProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Support\DomainStatus;
+use PlinCode\LaravelForgeDomain\Support\VerificationMethod;
 
 class Domain extends Model implements ProvisionableDomain
 {
@@ -252,7 +252,7 @@ All events carry a public `$domain` property typed as `ProvisionableDomain`.
 Register listeners in your `EventServiceProvider` or using `#[AsEventListener]`:
 
 ```php
-use PlinCode\ForgeDomain\Events\DomainActivated;
+use PlinCode\LaravelForgeDomain\Events\DomainActivated;
 
 public function handle(DomainActivated $event): void
 {
@@ -290,8 +290,8 @@ The package ships two test fakes. Swap them in with Laravel's `bind` or `instanc
 An in-memory `ForgeClient` that records creates, certificate state changes, and deletes without hitting the Forge API.
 
 ```php
-use PlinCode\ForgeDomain\Support\FakeForge;
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\Support\FakeForge;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
 
 $fake = new FakeForge();
 $this->app->instance(ForgeClient::class, $fake);
@@ -308,8 +308,8 @@ expect($fake->created)->toHaveKey(1);
 An in-memory `DnsResolver` that lets you seed CNAME, A, and TXT records per hostname.
 
 ```php
-use PlinCode\ForgeDomain\Support\FakeDnsResolver;
-use PlinCode\ForgeDomain\Contracts\DnsResolver;
+use PlinCode\LaravelForgeDomain\Support\FakeDnsResolver;
+use PlinCode\LaravelForgeDomain\Contracts\DnsResolver;
 
 $resolver = new FakeDnsResolver();
 $resolver->setCname('app.customer.com', ['proxy.myapp.com']);

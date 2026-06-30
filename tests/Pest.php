@@ -2,6 +2,6 @@
 
 declare(strict_types=1);
 
-use PlinCode\ForgeDomain\Tests\TestCase;
+use PlinCode\LaravelForgeDomain\Tests\TestCase;
 
 uses(TestCase::class)->in(__DIR__);

@@ -3,12 +3,12 @@
 declare(strict_types=1);
 
 use Illuminate\Support\Facades\Log;
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
-use PlinCode\ForgeDomain\DomainProvisioningManager;
-use PlinCode\ForgeDomain\Jobs\ReconcileDomainsJob;
-use PlinCode\ForgeDomain\Models\ManagedDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
-use PlinCode\ForgeDomain\Support\FakeForge;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\DomainProvisioningManager;
+use PlinCode\LaravelForgeDomain\Jobs\ReconcileDomainsJob;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Support\FakeForge;
 
 it('does nothing when management is disabled', function (): void {
     config()->set('forge-domain.manage', false);

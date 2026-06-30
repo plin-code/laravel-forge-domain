@@ -4,17 +4,17 @@ declare(strict_types=1);
 
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Event;
-use PlinCode\ForgeDomain\Contracts\DnsResolver;
-use PlinCode\ForgeDomain\DnsVerifierManager;
-use PlinCode\ForgeDomain\DomainProvisioningManager;
-use PlinCode\ForgeDomain\Events\DomainVerified;
-use PlinCode\ForgeDomain\Jobs\ConfirmSslJob;
-use PlinCode\ForgeDomain\Jobs\ProvisionDomainJob;
-use PlinCode\ForgeDomain\Jobs\VerifyDomainJob;
-use PlinCode\ForgeDomain\Models\ManagedDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
-use PlinCode\ForgeDomain\Support\DomainStatus;
-use PlinCode\ForgeDomain\Support\FakeDnsResolver;
+use PlinCode\LaravelForgeDomain\Contracts\DnsResolver;
+use PlinCode\LaravelForgeDomain\DnsVerifierManager;
+use PlinCode\LaravelForgeDomain\DomainProvisioningManager;
+use PlinCode\LaravelForgeDomain\Events\DomainVerified;
+use PlinCode\LaravelForgeDomain\Jobs\ConfirmSslJob;
+use PlinCode\LaravelForgeDomain\Jobs\ProvisionDomainJob;
+use PlinCode\LaravelForgeDomain\Jobs\VerifyDomainJob;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Support\DomainStatus;
+use PlinCode\LaravelForgeDomain\Support\FakeDnsResolver;
 
 it('verifies then queues provisioning', function (): void {
     Bus::fake([ProvisionDomainJob::class]);

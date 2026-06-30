@@ -2,18 +2,18 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Models;
+namespace PlinCode\LaravelForgeDomain\Models;
 
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Carbon;
-use PlinCode\ForgeDomain\Concerns\HasProvisionableDomain;
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
-use PlinCode\ForgeDomain\Database\Factories\ManagedDomainFactory;
-use PlinCode\ForgeDomain\Support\DomainKind;
-use PlinCode\ForgeDomain\Support\DomainStatus;
-use PlinCode\ForgeDomain\Support\VerificationMethod;
+use PlinCode\LaravelForgeDomain\Concerns\HasProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Database\Factories\ManagedDomainFactory;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Support\DomainStatus;
+use PlinCode\LaravelForgeDomain\Support\VerificationMethod;
 
 /**
  * @property string $hostname

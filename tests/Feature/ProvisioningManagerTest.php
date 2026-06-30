@@ -2,14 +2,14 @@
 
 declare(strict_types=1);
 
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
-use PlinCode\ForgeDomain\DomainProvisioningManager;
-use PlinCode\ForgeDomain\Drivers\ForgeProvisioner;
-use PlinCode\ForgeDomain\Drivers\WildcardProvisioner;
-use PlinCode\ForgeDomain\Models\ManagedDomain;
-use PlinCode\ForgeDomain\Support\DomainKind;
-use PlinCode\ForgeDomain\Support\DomainStatus;
-use PlinCode\ForgeDomain\Support\FakeForge;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\DomainProvisioningManager;
+use PlinCode\LaravelForgeDomain\Drivers\ForgeProvisioner;
+use PlinCode\LaravelForgeDomain\Drivers\WildcardProvisioner;
+use PlinCode\LaravelForgeDomain\Models\ManagedDomain;
+use PlinCode\LaravelForgeDomain\Support\DomainKind;
+use PlinCode\LaravelForgeDomain\Support\DomainStatus;
+use PlinCode\LaravelForgeDomain\Support\FakeForge;
 
 beforeEach(function (): void {
     $this->app->instance(ForgeClient::class, new FakeForge);

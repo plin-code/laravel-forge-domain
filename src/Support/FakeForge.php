@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Support;
+namespace PlinCode\LaravelForgeDomain\Support;
 
-use PlinCode\ForgeDomain\Contracts\ForgeClient;
+use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
 
 final class FakeForge implements ForgeClient
 {

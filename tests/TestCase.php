@@ -2,10 +2,10 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Tests;
+namespace PlinCode\LaravelForgeDomain\Tests;
 
 use Orchestra\Testbench\TestCase as Orchestra;
-use PlinCode\ForgeDomain\ForgeDomainServiceProvider;
+use PlinCode\LaravelForgeDomain\ForgeDomainServiceProvider;
 
 abstract class TestCase extends Orchestra
 {

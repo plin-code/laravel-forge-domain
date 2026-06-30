@@ -2,11 +2,11 @@
 
 declare(strict_types=1);
 
-namespace PlinCode\ForgeDomain\Verifiers;
+namespace PlinCode\LaravelForgeDomain\Verifiers;
 
-use PlinCode\ForgeDomain\Contracts\DnsResolver;
-use PlinCode\ForgeDomain\Contracts\DnsVerifier;
-use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\LaravelForgeDomain\Contracts\DnsResolver;
+use PlinCode\LaravelForgeDomain\Contracts\DnsVerifier;
+use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
 
 final class CnameVerifier implements DnsVerifier
 {
