@@ -6,13 +6,13 @@ namespace PlinCode\ForgeDomain\Jobs;
 
 use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Facades\Log;
 use PlinCode\ForgeDomain\Contracts\ForgeClient;
 use PlinCode\ForgeDomain\DomainProvisioningManager;
+use PlinCode\ForgeDomain\Models\ManagedDomain;
 use PlinCode\ForgeDomain\Support\DomainKind;
 
 final class ReconcileDomainsJob implements ShouldQueue
@@ -24,7 +24,7 @@ final class ReconcileDomainsJob implements ShouldQueue
 
     public function handle(DomainProvisioningManager $provisioners): void
     {
-        /** @var class-string<Model> $modelClass */
+        /** @var class-string<ManagedDomain> $modelClass */
         $modelClass = config('forge-domain.models.managed_domain');
 
         $domains = $modelClass::query()

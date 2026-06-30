@@ -18,18 +18,12 @@ trait HasProvisionableDomain
 
     public function getKind(): DomainKind
     {
-        return $this->kind instanceof DomainKind ? $this->kind : DomainKind::from((string) $this->kind);
+        return $this->kind;
     }
 
     public function getVerificationMethod(): ?VerificationMethod
     {
-        if ($this->verification_method === null) {
-            return null;
-        }
-
-        return $this->verification_method instanceof VerificationMethod
-            ? $this->verification_method
-            : VerificationMethod::from((string) $this->verification_method);
+        return $this->verification_method;
     }
 
     public function getVerificationToken(): ?string
@@ -54,7 +48,7 @@ trait HasProvisionableDomain
 
     public function getStatus(): DomainStatus
     {
-        return $this->status instanceof DomainStatus ? $this->status : DomainStatus::from((string) $this->status);
+        return $this->status;
     }
 
     public function markVerified(): void

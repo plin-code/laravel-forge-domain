@@ -6,4 +6,3 @@ parameters:
         - src
     tmpDir: build/phpstan
     checkModelProperties: true
-    checkMissingIterableValueType: false

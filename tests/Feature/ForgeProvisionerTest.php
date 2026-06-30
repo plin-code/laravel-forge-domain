@@ -2,12 +2,12 @@
 
 declare(strict_types=1);
 
-use Psr\Log\NullLogger;
 use PlinCode\ForgeDomain\Drivers\ForgeProvisioner;
 use PlinCode\ForgeDomain\Models\ManagedDomain;
 use PlinCode\ForgeDomain\Support\DomainKind;
 use PlinCode\ForgeDomain\Support\DomainStatus;
 use PlinCode\ForgeDomain\Support\FakeForge;
+use Psr\Log\NullLogger;
 
 function forgeDomain(): ManagedDomain
 {

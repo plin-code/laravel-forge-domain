@@ -50,7 +50,7 @@ final class FakeForge implements ForgeClient
 
     public function listDomainIds(): array
     {
-        return array_values(array_keys($this->created));
+        return array_keys($this->created);
     }
 
     public function setActive(int $forgeDomainId, bool $active): void

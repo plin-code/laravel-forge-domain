@@ -7,6 +7,7 @@ namespace PlinCode\ForgeDomain\Models;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Carbon;
 use PlinCode\ForgeDomain\Concerns\HasProvisionableDomain;
 use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
 use PlinCode\ForgeDomain\Database\Factories\ManagedDomainFactory;
@@ -14,9 +15,21 @@ use PlinCode\ForgeDomain\Support\DomainKind;
 use PlinCode\ForgeDomain\Support\DomainStatus;
 use PlinCode\ForgeDomain\Support\VerificationMethod;
 
+/**
+ * @property string $hostname
+ * @property DomainKind $kind
+ * @property DomainStatus $status
+ * @property VerificationMethod|null $verification_method
+ * @property string|null $verification_token
+ * @property string|null $dns_target
+ * @property int|null $forge_domain_id
+ * @property Carbon|null $ssl_expires_at
+ */
 class ManagedDomain extends Model implements ProvisionableDomain
 {
+    /** @use HasFactory<ManagedDomainFactory> */
     use HasFactory;
+
     use HasProvisionableDomain;
     use HasUuids;
 

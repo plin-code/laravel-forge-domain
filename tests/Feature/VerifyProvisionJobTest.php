@@ -5,6 +5,8 @@ declare(strict_types=1);
 use Illuminate\Support\Facades\Bus;
 use Illuminate\Support\Facades\Event;
 use PlinCode\ForgeDomain\Contracts\DnsResolver;
+use PlinCode\ForgeDomain\DnsVerifierManager;
+use PlinCode\ForgeDomain\DomainProvisioningManager;
 use PlinCode\ForgeDomain\Events\DomainVerified;
 use PlinCode\ForgeDomain\Jobs\ConfirmSslJob;
 use PlinCode\ForgeDomain\Jobs\ProvisionDomainJob;
@@ -25,7 +27,7 @@ it('verifies then queues provisioning', function (): void {
 
     $domain = ManagedDomain::create(['hostname' => 'app.acme.com', 'kind' => DomainKind::Custom]);
 
-    (new VerifyDomainJob($domain))->handle(new \PlinCode\ForgeDomain\DnsVerifierManager($this->app, config('forge-domain')));
+    (new VerifyDomainJob($domain))->handle(new DnsVerifierManager($this->app, config('forge-domain')));
 
     expect($domain->fresh()->getStatus())->toBe(DomainStatus::Verified);
     Event::assertDispatched(DomainVerified::class);
@@ -36,7 +38,7 @@ it('provisions then queues ssl confirmation', function (): void {
     Bus::fake([ConfirmSslJob::class]);
     $domain = ManagedDomain::create(['hostname' => 'acme.platform.test', 'kind' => DomainKind::Subdomain]);
 
-    (new ProvisionDomainJob($domain))->handle(new \PlinCode\ForgeDomain\DomainProvisioningManager($this->app, config('forge-domain')));
+    (new ProvisionDomainJob($domain))->handle(new DomainProvisioningManager($this->app, config('forge-domain')));
 
     expect($domain->fresh()->getStatus())->toBe(DomainStatus::Active);
     Bus::assertDispatched(ConfirmSslJob::class);
