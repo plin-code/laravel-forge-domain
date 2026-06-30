@@ -10,6 +10,19 @@ use PlinCode\ForgeDomain\Models\ManagedDomain;
 use PlinCode\ForgeDomain\Support\DomainKind;
 use PlinCode\ForgeDomain\Support\FakeForge;
 
+it('does nothing when management is disabled', function (): void {
+    config()->set('forge-domain.manage', false);
+    $forge = new FakeForge;
+    $forge->createDomain('orphan.test'); // orphan, not tracked in DB
+    $this->app->instance(ForgeClient::class, $forge);
+    Log::spy();
+
+    (new ReconcileDomainsJob)->handle(new DomainProvisioningManager($this->app, config('forge-domain')));
+
+    Log::shouldNotHaveReceived('warning');
+    expect($forge->listDomainIds())->toHaveCount(1);
+});
+
 it('logs orphaned forge domains in log mode', function (): void {
     config()->set('forge-domain.manage', true);
     config()->set('forge-domain.reconcile.mode', 'log');

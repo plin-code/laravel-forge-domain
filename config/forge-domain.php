@@ -37,7 +37,12 @@ return [
     ],
 
     'reconcile' => [
-        'mode' => 'log', // log | cleanup
+        // log | cleanup
+        // WARNING: cleanup deletes every Forge domain on the configured site that
+        // the package does not track. Only enable this when the Forge site is
+        // dedicated exclusively to package-managed domains. Any manually created
+        // domain on that site will be permanently deleted without further warning.
+        'mode' => 'log',
     ],
 
     'models' => [

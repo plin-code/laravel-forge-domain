@@ -275,6 +275,8 @@ Schedule::command('forge-domain:renew-ssl')->daily();
 
 Dispatches `ReconcileDomainsJob`, which compares the domain IDs stored in your database against the domain IDs returned by the Forge API and reports (or cleans up) any divergence. When `reconcile.mode` is `log`, divergences are written to the application log. When set to `cleanup`, orphaned Forge domains are deleted.
 
+> **Warning.** Setting `reconcile.mode` to `cleanup` will permanently delete every Forge domain on the configured site that the package does not track. Only enable this option when the Forge site is dedicated exclusively to package-managed domains (any manually created domain on that site will be removed without further confirmation).
+
 ```php
 Schedule::command('forge-domain:reconcile')->weekly();
 ```

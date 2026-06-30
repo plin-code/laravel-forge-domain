@@ -24,6 +24,12 @@ final class ReconcileDomainsJob implements ShouldQueue
 
     public function handle(DomainProvisioningManager $provisioners): void
     {
+        // When the kill-switch is off, skip both the Forge API read and any
+        // cleanup deletes so that management-disabled environments are fully inert.
+        if (! config('forge-domain.manage')) {
+            return;
+        }
+
         /** @var class-string<ManagedDomain> $modelClass */
         $modelClass = config('forge-domain.models.managed_domain');
 
@@ -39,6 +45,10 @@ final class ReconcileDomainsJob implements ShouldQueue
             return;
         }
 
+        // WARNING: cleanup mode deletes every Forge domain on the configured site
+        // that this package does not track. Only enable it when the Forge site is
+        // dedicated exclusively to package-managed domains. Any manually created
+        // domain on that site will be permanently deleted without further warning.
         if (config('forge-domain.reconcile.mode') === 'cleanup') {
             $forge = app(ForgeClient::class);
             foreach ($report->orphanedInForge as $forgeDomainId) {
