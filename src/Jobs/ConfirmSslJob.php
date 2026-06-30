@@ -12,6 +12,7 @@ use Illuminate\Queue\SerializesModels;
 use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
 use PlinCode\ForgeDomain\DomainProvisioningManager;
 use PlinCode\ForgeDomain\Events\DomainActivated;
+use PlinCode\ForgeDomain\Events\DomainFailed;
 
 final class ConfirmSslJob implements ShouldQueue
 {
@@ -20,10 +21,14 @@ final class ConfirmSslJob implements ShouldQueue
     use Queueable;
     use SerializesModels;
 
-    // Bound here; deployments can raise it. The release() backoff below paces polling.
-    public int $tries = 15;
+    // Driven by forge-domain.ssl.poll_tries; deployments can raise it via config.
+    // The release() backoff below paces polling.
+    public int $tries;
 
-    public function __construct(public ProvisionableDomain $domain) {}
+    public function __construct(public ProvisionableDomain $domain)
+    {
+        $this->tries = (int) config('forge-domain.ssl.poll_tries', 15);
+    }
 
     public function handle(DomainProvisioningManager $provisioners): void
     {
@@ -34,5 +39,11 @@ final class ConfirmSslJob implements ShouldQueue
         }
 
         $this->release((int) config('forge-domain.ssl.poll_backoff', 30));
+    }
+
+    public function failed(\Throwable $exception): void
+    {
+        $this->domain->markFailed($exception->getMessage());
+        event(new DomainFailed($this->domain, $exception->getMessage()));
     }
 }

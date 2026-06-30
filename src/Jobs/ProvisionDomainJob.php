@@ -11,6 +11,7 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
 use PlinCode\ForgeDomain\DomainProvisioningManager;
+use PlinCode\ForgeDomain\Events\DomainFailed;
 use PlinCode\ForgeDomain\Events\DomainProvisioning;
 
 final class ProvisionDomainJob implements ShouldQueue
@@ -30,5 +31,11 @@ final class ProvisionDomainJob implements ShouldQueue
         $provisioners->for($this->domain)->provision($this->domain);
 
         ConfirmSslJob::dispatch($this->domain)->delay(now()->addSeconds(30));
+    }
+
+    public function failed(\Throwable $exception): void
+    {
+        $this->domain->markFailed($exception->getMessage());
+        event(new DomainFailed($this->domain, $exception->getMessage()));
     }
 }
