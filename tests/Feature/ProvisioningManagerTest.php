@@ -2,7 +2,6 @@
 
 declare(strict_types=1);
 
-use Illuminate\Support\Facades\Config;
 use PlinCode\ForgeDomain\Contracts\ForgeClient;
 use PlinCode\ForgeDomain\DomainProvisioningManager;
 use PlinCode\ForgeDomain\Drivers\ForgeProvisioner;
@@ -39,4 +38,13 @@ it('throws on an unknown driver', function (): void {
     $manager = new DomainProvisioningManager($this->app, config('forge-domain'));
 
     $manager->driver('nope');
+})->throws(InvalidArgumentException::class);
+
+it('throws when the kind has no mapped driver', function (): void {
+    $config = config('forge-domain');
+    $config['drivers'] = [];
+    $manager = new DomainProvisioningManager($this->app, $config);
+    $domain = ManagedDomain::create(['hostname' => 'app.acme.com', 'kind' => DomainKind::Custom]);
+
+    $manager->for($domain);
 })->throws(InvalidArgumentException::class);
