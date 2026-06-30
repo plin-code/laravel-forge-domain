@@ -58,3 +58,27 @@ it('deletes on remove and diffs on reconcile', function (): void {
     $driver->remove($domain->fresh());
     expect($forge->listDomainIds())->toBe([$orphanId]);
 });
+
+it('does not delete on remove when management is off', function (): void {
+    $forge = new FakeForge;
+    $forgeId = $forge->createDomain('app.acme.com');
+    $domain = forgeDomain();
+    $domain->setForgeDomainId($forgeId);
+    $driver = new ForgeProvisioner($forge, manage: false, sslDays: 90, logger: new NullLogger);
+
+    $driver->remove($domain->fresh());
+
+    expect($forge->listDomainIds())->toBe([$forgeId]);
+});
+
+it('reports missing forge ids on reconcile', function (): void {
+    $forge = new FakeForge;
+    $domain = forgeDomain();
+    $domain->setForgeDomainId(99);
+    $driver = new ForgeProvisioner($forge, manage: true, sslDays: 90, logger: new NullLogger);
+
+    $report = $driver->reconcile([$domain->fresh()]);
+
+    expect($report->missingInForge)->toContain(99)
+        ->and($report->orphanedInForge)->toBeEmpty();
+});
