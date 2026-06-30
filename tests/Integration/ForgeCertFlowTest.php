@@ -19,21 +19,23 @@ it('attaches a hostname and issues an active certificate', function (): void {
         (int) getenv('FORGE_DOMAIN_SITE_ID'),
     );
 
-    $hostname = 'it-'.time().'.'.getenv('FORGE_DOMAIN_TEST_BASE');
+    $hostname = 'it-'.time().'.'.(string) getenv('FORGE_DOMAIN_TEST_BASE');
     $id = $client->createDomain($hostname);
-    $client->createCertificate($id);
 
     $active = false;
-    for ($i = 0; $i < 20; $i++) {
-        if ($client->certificateIsActive($id)) {
-            $client->activateCertificate($id); // confirms the ACTIVATE_VERB
-            $active = true;
-            break;
+    try {
+        $client->createCertificate($id);
+        for ($i = 0; $i < 20; $i++) {
+            if ($client->certificateIsActive($id)) {
+                $client->activateCertificate($id); // confirms the ACTIVATE_VERB
+                $active = true;
+                break;
+            }
+            sleep(15);
         }
-        sleep(15);
+    } finally {
+        $client->deleteDomain($id);
     }
-
-    $client->deleteDomain($id);
 
     expect($active)->toBeTrue();
 });
