@@ -33,7 +33,7 @@ final class ForgeDomainServiceProvider extends PackageServiceProvider
     {
         $this->app->bind(DnsResolver::class, PhpDnsResolver::class);
 
-        $this->app->bind(ForgeClient::class, function (): ForgeClient {
+        $this->app->singleton(ForgeClient::class, function (): ForgeClient {
             /** @var array<string,mixed> $forgeConfig */
             $forgeConfig = config('forge-domain.forge', []);
 

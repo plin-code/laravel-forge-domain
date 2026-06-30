@@ -38,6 +38,8 @@ final class ForgeProvisioner implements DomainProvisioner
     public function confirm(ProvisionableDomain $domain): bool
     {
         if (! $this->manage) {
+            $domain->markSslActive(CarbonImmutable::now()->addDays($this->sslDays));
+
             return true;
         }
 
