@@ -1,0 +1,36 @@
+name: integration-tests
+
+on:
+  workflow_dispatch:
+  pull_request:
+    types: [labeled]
+
+jobs:
+  integration:
+    if: github.event_name == 'workflow_dispatch' || github.event.label.name == 'integration'
+    runs-on: ubuntu-latest
+
+    env:
+      FORGE_DOMAIN_INTEGRATION: '1'
+      FORGE_DOMAIN_TOKEN: ${{ secrets.FORGE_DOMAIN_TOKEN }}
+      FORGE_DOMAIN_ORGANIZATION: ${{ secrets.FORGE_DOMAIN_ORGANIZATION }}
+      FORGE_DOMAIN_SERVER_ID: ${{ secrets.FORGE_DOMAIN_SERVER_ID }}
+      FORGE_DOMAIN_SITE_ID: ${{ secrets.FORGE_DOMAIN_SITE_ID }}
+      FORGE_DOMAIN_TEST_BASE: ${{ secrets.FORGE_DOMAIN_TEST_BASE }}
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '8.3'
+          extensions: dom, curl, libxml, mbstring, zip
+          coverage: none
+
+      - name: Install dependencies
+        run: composer install --prefer-dist --no-interaction --no-progress
+
+      - name: Run integration tests
+        run: vendor/bin/pest tests/Integration
