@@ -16,7 +16,7 @@ final class DnsVerifierManager
 {
     /** @param array<string,mixed> $config */
     public function __construct(
-        private Container $app,
+        private readonly Container $app,
         private array $config,
     ) {}
 

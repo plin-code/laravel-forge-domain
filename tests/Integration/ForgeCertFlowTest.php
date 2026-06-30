@@ -19,7 +19,7 @@ it('attaches a hostname and issues an active certificate', function (): void {
         (int) getenv('FORGE_DOMAIN_SITE_ID'),
     );
 
-    $hostname = 'it-'.time().'.'.(string) getenv('FORGE_DOMAIN_TEST_BASE');
+    $hostname = 'it-'.time().'.'.getenv('FORGE_DOMAIN_TEST_BASE');
     $id = $client->createDomain($hostname);
 
     $active = false;

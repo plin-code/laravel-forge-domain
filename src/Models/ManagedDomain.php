@@ -44,6 +44,7 @@ class ManagedDomain extends Model implements ProvisionableDomain
         'ssl_expires_at' => 'datetime',
     ];
 
+    #[\Override]
     public function getKey(): mixed
     {
         return parent::getKey();

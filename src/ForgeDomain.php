@@ -8,7 +8,7 @@ use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
 use PlinCode\LaravelForgeDomain\Jobs\RemoveDomainJob;
 use PlinCode\LaravelForgeDomain\Jobs\VerifyDomainJob;
 
-final class ForgeDomain
+final readonly class ForgeDomain
 {
     public function __construct(
         private DomainProvisioningManager $provisioners,

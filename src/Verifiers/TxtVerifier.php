@@ -8,7 +8,7 @@ use PlinCode\LaravelForgeDomain\Contracts\DnsResolver;
 use PlinCode\LaravelForgeDomain\Contracts\DnsVerifier;
 use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
 
-final class TxtVerifier implements DnsVerifier
+final readonly class TxtVerifier implements DnsVerifier
 {
     public function __construct(
         private DnsResolver $dns,

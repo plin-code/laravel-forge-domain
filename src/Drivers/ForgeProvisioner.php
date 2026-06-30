@@ -11,7 +11,7 @@ use PlinCode\LaravelForgeDomain\Contracts\ProvisionableDomain;
 use PlinCode\LaravelForgeDomain\Support\ReconcileReport;
 use Psr\Log\LoggerInterface;
 
-final class ForgeProvisioner implements DomainProvisioner
+final readonly class ForgeProvisioner implements DomainProvisioner
 {
     public function __construct(
         private ForgeClient $forge,

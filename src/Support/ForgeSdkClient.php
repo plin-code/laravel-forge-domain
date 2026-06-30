@@ -8,13 +8,13 @@ use Laravel\Forge\Forge;
 use PlinCode\LaravelForgeDomain\Contracts\ForgeClient;
 use Throwable;
 
-final class ForgeSdkClient implements ForgeClient
+final readonly class ForgeSdkClient implements ForgeClient
 {
     // VERIFY-LIVE: the v4 certificate-action verb. plincode used 'enable'; v3's
     // helper was activate() and the resource flag is Certificate.active, so
     // 'activate' is the likely-correct value. Confirm against the live Forge API
     // (the integration test in Task 17 settles this). Change only this constant.
-    private const ACTIVATE_VERB = 'activate';
+    private const string ACTIVATE_VERB = 'activate';
 
     public function __construct(
         private Forge $forge,
@@ -49,7 +49,7 @@ final class ForgeSdkClient implements ForgeClient
                 $this->organization, $this->serverId, $this->siteId, $forgeDomainId,
             );
 
-            return (bool) ($certificate->active ?? false);
+            return $certificate->active ?? false;
         } catch (Throwable) {
             return false;
         }
