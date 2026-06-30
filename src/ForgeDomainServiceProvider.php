@@ -67,7 +67,6 @@ final class ForgeDomainServiceProvider extends PackageServiceProvider
             'forge-domain',
             fn (Container $app): ForgeDomain => new ForgeDomain(
                 $app->make(DomainProvisioningManager::class),
-                $app->make(DnsVerifierManager::class),
             ),
         );
 

@@ -12,7 +12,6 @@ final class ForgeDomain
 {
     public function __construct(
         private DomainProvisioningManager $provisioners,
-        private DnsVerifierManager $verifiers,
     ) {}
 
     public function onboard(ProvisionableDomain $domain): void

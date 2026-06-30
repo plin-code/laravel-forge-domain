@@ -1,6 +1,2 @@
 parameters:
-    ignoreErrors:
-        -
-            message: '#Property PlinCode\\ForgeDomain\\ForgeDomain::\$verifiers is never read, only written\.#'
-            path: src/ForgeDomain.php
-            count: 1
+    ignoreErrors: []
