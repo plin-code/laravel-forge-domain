@@ -11,28 +11,19 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
 use PlinCode\ForgeDomain\DomainProvisioningManager;
-use PlinCode\ForgeDomain\Events\DomainActivated;
 
-final class ConfirmSslJob implements ShouldQueue
+final class RenewSslJob implements ShouldQueue
 {
     use Dispatchable;
     use InteractsWithQueue;
     use Queueable;
     use SerializesModels;
 
-    // Bound here; deployments can raise it. The release() backoff below paces polling.
-    public int $tries = 15;
-
     public function __construct(public ProvisionableDomain $domain) {}
 
     public function handle(DomainProvisioningManager $provisioners): void
     {
-        if ($provisioners->for($this->domain)->confirm($this->domain)) {
-            event(new DomainActivated($this->domain));
-
-            return;
-        }
-
-        $this->release((int) config('forge-domain.ssl.poll_backoff', 30));
+        $provisioners->for($this->domain)->provision($this->domain);
+        ConfirmSslJob::dispatch($this->domain)->delay(now()->addSeconds(30));
     }
 }
