@@ -1,0 +1,48 @@
+<?php
+
+declare(strict_types=1);
+
+namespace PlinCode\ForgeDomain;
+
+use Illuminate\Contracts\Container\Container;
+use InvalidArgumentException;
+use PlinCode\ForgeDomain\Contracts\DomainProvisioner;
+use PlinCode\ForgeDomain\Contracts\ForgeClient;
+use PlinCode\ForgeDomain\Contracts\ProvisionableDomain;
+use PlinCode\ForgeDomain\Drivers\ForgeProvisioner;
+use PlinCode\ForgeDomain\Drivers\WildcardProvisioner;
+use Psr\Log\LoggerInterface;
+
+final class DomainProvisioningManager
+{
+    /** @param array<string,mixed> $config */
+    public function __construct(
+        private Container $app,
+        private array $config,
+    ) {}
+
+    public function for(ProvisionableDomain $domain): DomainProvisioner
+    {
+        $name = $this->config['drivers'][$domain->getKind()->value] ?? null;
+
+        if (! is_string($name)) {
+            throw new InvalidArgumentException("No driver mapped for kind [{$domain->getKind()->value}].");
+        }
+
+        return $this->driver($name);
+    }
+
+    public function driver(string $name): DomainProvisioner
+    {
+        return match ($name) {
+            'forge' => new ForgeProvisioner(
+                $this->app->make(ForgeClient::class),
+                (bool) $this->config['manage'],
+                (int) $this->config['ssl']['active_days'],
+                $this->app->make(LoggerInterface::class),
+            ),
+            'wildcard' => new WildcardProvisioner,
+            default => throw new InvalidArgumentException("Unknown provisioner driver [{$name}]."),
+        };
+    }
+}
