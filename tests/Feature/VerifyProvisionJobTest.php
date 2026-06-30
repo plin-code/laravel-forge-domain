@@ -34,6 +34,20 @@ it('verifies then queues provisioning', function (): void {
     Bus::assertDispatched(ProvisionDomainJob::class);
 });
 
+it('verifies subdomains without dns and queues provisioning', function (): void {
+    Bus::fake([ProvisionDomainJob::class]);
+    Event::fake([DomainVerified::class]);
+
+    // No DNS resolver records set; a real lookup would return nothing for this hostname.
+    $domain = ManagedDomain::create(['hostname' => 'acme.platform.test', 'kind' => DomainKind::Subdomain]);
+
+    (new VerifyDomainJob($domain))->handle(new DnsVerifierManager($this->app, config('forge-domain')));
+
+    expect($domain->fresh()->getStatus())->toBe(DomainStatus::Verified);
+    Event::assertDispatched(DomainVerified::class);
+    Bus::assertDispatched(ProvisionDomainJob::class);
+});
+
 it('provisions then queues ssl confirmation', function (): void {
     Bus::fake([ConfirmSslJob::class]);
     $domain = ManagedDomain::create(['hostname' => 'acme.platform.test', 'kind' => DomainKind::Subdomain]);
