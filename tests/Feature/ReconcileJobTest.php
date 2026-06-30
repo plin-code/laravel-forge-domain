@@ -29,3 +29,22 @@ it('logs orphaned forge domains in log mode', function (): void {
 
     Log::shouldHaveReceived('warning')->once();
 });
+
+it('deletes orphaned forge domains in cleanup mode', function (): void {
+    config()->set('forge-domain.manage', true);
+    config()->set('forge-domain.reconcile.mode', 'cleanup');
+    $forge = new FakeForge;
+    $this->app->instance(ForgeClient::class, $forge);
+
+    $knownId = $forge->createDomain('app.acme.com');
+    ManagedDomain::create([
+        'hostname' => 'app.acme.com',
+        'kind' => DomainKind::Custom,
+        'forge_domain_id' => $knownId,
+    ]);
+    $orphanId = $forge->createDomain('orphan.test');
+
+    (new ReconcileDomainsJob)->handle(new DomainProvisioningManager($this->app, config('forge-domain')));
+
+    expect($forge->listDomainIds())->toContain($knownId)->not->toContain($orphanId);
+});
