@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="https://raw.githubusercontent.com/plin-code/laravel-forge-domain/main/art/banner.png" alt="Laravel Forge Domain">
+</p>
+
 # forge-domain
 
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/plin-code/laravel-forge-domain.svg?style=flat-square)](https://packagist.org/packages/plin-code/laravel-forge-domain)
