@@ -4,10 +4,13 @@
 
 # forge-domain
 
-[![Latest Version on Packagist](https://img.shields.io/packagist/v/plin-code/laravel-forge-domain.svg?style=flat-square)](https://packagist.org/packages/plin-code/laravel-forge-domain)
-[![Tests](https://img.shields.io/github/actions/workflow/status/plin-code/laravel-forge-domain/run-tests.yml?branch=main&label=tests&style=flat-square)](https://github.com/plin-code/laravel-forge-domain/actions/workflows/run-tests.yml)
-[![Code Style](https://img.shields.io/github/actions/workflow/status/plin-code/laravel-forge-domain/fix-php-code-style-issues.yml?branch=main&label=code%20style&style=flat-square)](https://github.com/plin-code/laravel-forge-domain/actions/workflows/fix-php-code-style-issues.yml)
-[![Total Downloads](https://img.shields.io/packagist/dt/plin-code/laravel-forge-domain.svg?style=flat-square)](https://packagist.org/packages/plin-code/laravel-forge-domain)
+<p align="center">
+    <a href="https://packagist.org/packages/plin-code/laravel-forge-domain"><img src="https://img.shields.io/packagist/v/plin-code/laravel-forge-domain.svg?style=flat-square" alt="Packagist"></a>
+    <a href="https://packagist.org/packages/plin-code/laravel-forge-domain"><img src="https://img.shields.io/packagist/php-v/plin-code/laravel-forge-domain.svg?style=flat-square" alt="PHP from Packagist"></a>
+    <a href="https://packagist.org/packages/plin-code/laravel-forge-domain"><img src="https://badge.laravel.cloud/badge/plin-code/laravel-forge-domain?style=flat" alt="Laravel versions"></a>
+    <a href="https://github.com/plin-code/laravel-forge-domain/actions"><img alt="GitHub Workflow Status (main)" src="https://img.shields.io/github/actions/workflow/status/plin-code/laravel-forge-domain/run-tests.yml?branch=main&label=Tests&style=flat-square"></a>
+    <a href="https://packagist.org/packages/plin-code/laravel-forge-domain"><img src="https://img.shields.io/packagist/dt/plin-code/laravel-forge-domain.svg?style=flat-square" alt="Total Downloads"></a>
+</p>
 
 A Laravel package for onboarding tenant and customer hostnames with DNS verification and a Laravel Forge SSL provisioning flow.
 
